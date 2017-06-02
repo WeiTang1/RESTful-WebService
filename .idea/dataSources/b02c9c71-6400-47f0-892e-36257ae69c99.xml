@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="day25@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="day25">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="assignments"/>
+    <schema id="4" parent="1" name="crud"/>
+    <schema id="5" parent="1" name="day16"/>
+    <schema id="6" parent="1" name="day17"/>
+    <schema id="7" parent="1" name="EMP"/>
+    <schema id="8" parent="1" name="EmployeeClockProgram"/>
+    <schema id="9" parent="1" name="hotelApp"/>
+    <schema id="10" parent="1" name="information_schema"/>
+    <schema id="11" parent="1" name="MCOTS"/>
+    <schema id="12" parent="1" name="mysql"/>
+    <schema id="13" parent="1" name="onlineshopping"/>
+    <schema id="14" parent="1" name="performance_schema"/>
+    <schema id="15" parent="1" name="sys"/>
+    <table id="16" parent="2" name="talk"/>
+    <column id="17" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="18" parent="16" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="19" parent="16" name="speaker">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="20" parent="16" name="venue">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="21" parent="16" name="duration">
+      <Position>5</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <key id="22" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

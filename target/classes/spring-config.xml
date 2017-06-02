@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name = "location">
+            <value>database.properties</value>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value = "${jdbc.driverClassName}"/>
+        <property name="url" value = "${jdbc.url}"/>
+        <property name="username" value = "${jdbc.username}"/>
+        <property name="password" value = "${jdbc.password}"/>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mappingLocations" value="Talk.hbm.xml"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+            </props>
+        </property>
+    </bean>
+
+    <tx:annotation-driven proxy-target-class="true"/>
+    <bean id = "transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id = "template" class = "org.springframework.orm.hibernate5.HibernateTemplate">
+        <property name="sessionFactory" ref = "sessionFactory"></property>
+    </bean>
+    <bean id="talk1" class="com.wei.restful.model.Talk">
+        <property name="duration" value = "1.9"/>
+        <property name="speaker" value="Wei"/>
+        <property name="name" value = "Ted"/>
+        <property name="venue" value = "IO"/>
+    </bean>
+
+    <bean id = "dao" class = "com.wei.restful.dao.TalkHibernateDao">
+        <property name="hibernateTemplate" ref = "template"></property>
+    </bean>
+
+
+</beans>
